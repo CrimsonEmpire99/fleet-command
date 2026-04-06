@@ -1,4 +1,9 @@
 FROM n8nio/n8n:latest
 USER root
-RUN apk add --no-cache tesseract-ocr tesseract-ocr-data-eng python3 py3-pip
+RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 USER node
